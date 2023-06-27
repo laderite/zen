@@ -595,6 +595,24 @@ function ZenLibrary:CreateMenu(Settings)
         Container.Name = "Container"
         Container.Parent = Main
         Container.Visible = false
+        
+        local frame = Container.Left
+        local layout = frame:FindFirstChildWhichIsA("UIListLayout")
+        local absoluteContentSize = layout.AbsoluteContentSize
+        frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
+        layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            local absoluteContentSize = layout.AbsoluteContentSize
+            frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
+        end)
+
+        local frame = Container.Right
+        local layout = frame:FindFirstChildWhichIsA("UIListLayout")
+        local absoluteContentSize = layout.AbsoluteContentSize
+        frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
+        layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            local absoluteContentSize = layout.AbsoluteContentSize
+            frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
+        end)
 
         if firstTab == nil then
             firstTab = Container
