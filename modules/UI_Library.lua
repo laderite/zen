@@ -7,12 +7,18 @@ local Release = "v1.0"
 local LibraryFolder = "ZenXLibrary"
 local ConfigurationFolder = LibraryFolder .. "/Configurations"
 local ConfigurationExtension = ".znx"
-local ObjectID = "13875331863"
+local ObjectID = "13320138735"
 
 local ZenLibrary = {
     Flags = {}, 
     Themes = {
         Default = {
+            Text = Color3.fromHex('#ffffff'),
+            Background = Color3.fromHex('#1d1d1d'),
+            PrimaryButton = Color3.fromHex('#232323'),
+            SecondaryButton = Color3.fromHex('#232323'),
+            Accent = Color3.fromHex('#323232'),
+            
             ToggleBackground = Color3.fromRGB(0,0,0),
             ToggleEnabled = Color3.fromRGB(255, 100, 100),
             ToggleEnabledStroke = Color3.fromRGB(255, 100, 100),
