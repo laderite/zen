@@ -1279,6 +1279,4 @@ task.spawn(function()
     ZenLibrary.LoadConfiguration() 
 end)
 
-applyTheme(Main)
-
 return ZenLibrary
