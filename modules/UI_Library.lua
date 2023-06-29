@@ -53,7 +53,8 @@ local CoreGui = game:GetService("CoreGui")
 local Zen = game:GetObjects("rbxassetid://" .. ObjectID)[1]
 Zen.Menu.Visible = false
 
-local containerUI = gethui and gethui() or CoreGui
+--local containerUI = gethui and gethui() or CoreGui
+local containerUI = CoreGui
 Zen.Parent = containerUI;
 for _, UI in ipairs(containerUI:GetChildren()) do
     if UI.Name == Zen.Name and UI ~= Zen then
@@ -358,7 +359,7 @@ function unHideMenu(firstTime)
     showContainerElements()
 
 
-    wait(0.5)
+    task.wait(0.5)
 	Minimised = false
 	Debounce = false
     if firstTime then libraryLoaded = true end
@@ -558,7 +559,6 @@ function ZenLibrary:CreateMenu(Settings)
 
     function tabHandler:Load()
         if Debounce then return end
-        task.wait(1)
         unHideMenu(true)
     end
 
