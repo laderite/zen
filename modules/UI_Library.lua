@@ -983,21 +983,9 @@ function ZenLibrary:CreateMenu(Settings)
                     DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption}
                 end
                 
-                if not DropdownSettings.MultipleOptions then
-                    DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption[1]}
-                end
+                DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption[1]}
                 
-                if DropdownSettings.MultipleOptions then
-                    if #DropdownSettings.CurrentOption == 1 then
-                        Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                    elseif #DropdownSettings.CurrentOption == 0 then
-                        Dropdown.Main.Title.Text = DropdownSettings.Name .. " - "
-                    else
-                        Dropdown.Main.Title.Text = DropdownSettings.Name .. " - multiple.."
-                    end
-                else
-                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                end
+                Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
 
                 Dropdown.MouseButton1Click:Connect(function()
                     if Debounce then return end
@@ -1052,42 +1040,21 @@ function ZenLibrary:CreateMenu(Settings)
     
                     DropdownOption.ZIndex = 50
                     DropdownOption.MouseButton1Click:Connect(function()
-                        if not DropdownSettings.MultipleOptions and table.find(DropdownSettings.CurrentOption, Option) then 
-                            return
-                        end
-    
+
                         if table.find(DropdownSettings.CurrentOption, Option) then
                             table.remove(DropdownSettings.CurrentOption, table.find(DropdownSettings.CurrentOption, Option))
-                            if DropdownSettings.MultipleOptions then
-                                if #DropdownSettings.CurrentOption == 1 then
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                                elseif #DropdownSettings.CurrentOption == 0 then
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - "
-                                else
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - multiple.."
-                                end
-                            else
-                                Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                            end
                         else
-                            if not DropdownSettings.MultipleOptions then
-                                table.clear(DropdownSettings.CurrentOption)
-                            end
+                            table.clear(DropdownSettings.CurrentOption)
                             table.insert(DropdownSettings.CurrentOption, Option)
-                            if DropdownSettings.MultipleOptions then
-                                if #DropdownSettings.CurrentOption == 1 then
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                                elseif #DropdownSettings.CurrentOption == 0 then
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - "
-                                else
-                                    Dropdown.Main.Title.Text = DropdownSettings.Name .. " - multiple.."
-                                end
-                            else
-                                Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. DropdownSettings.CurrentOption[1]
-                            end
                         end
                         
-    
+                        local currentOption = DropdownSettings.CurrentOption[1]
+                        if currentOption ~= nil then
+                            Dropdown.Main.Title.Text = DropdownSettings.Name .. " - " .. tostring(currentOption)
+                        else
+                            Dropdown.Main.Title.Text = DropdownSettings.Name .. " - "
+                        end
+                    
                         DropdownSettings.Callback(DropdownSettings.CurrentOption)
                         SaveConfiguration()	
                     end)
@@ -1103,7 +1070,7 @@ function ZenLibrary:CreateMenu(Settings)
                     end
                 end
 
-                function DropdownSettings:Set(NewOption)
+                --[[function DropdownSettings:Set(NewOption)
                     if typeof(DropdownSettings.CurrentOption) == "string" then
                         DropdownSettings.CurrentOption = {DropdownSettings.CurrentOption}
                     end
@@ -1134,7 +1101,7 @@ function ZenLibrary:CreateMenu(Settings)
                             end
                         end
                     end
-                end
+                end]]
 
                 if Settings.ConfigurationSaving then
                     if Settings.ConfigurationSaving.Enabled and DropdownSettings.Flag then
