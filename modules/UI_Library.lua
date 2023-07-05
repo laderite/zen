@@ -3,7 +3,7 @@
     by jsn#0499
 ]]
 
-local Release = "v1.0"
+local Release = "v1.01"
 local LibraryFolder = "ZenXLibrary"
 local ConfigurationFolder = LibraryFolder .. "/Configurations"
 local ConfigurationExtension = ".znx"
