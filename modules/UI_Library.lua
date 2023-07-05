@@ -1037,8 +1037,8 @@ function ZenLibrary:CreateMenu(Settings)
 
                 for _, Option in ipairs(DropdownSettings.Options) do
                     local DropdownOption = ExampleSection.Holder.Dropdown.List.Holder.Option:Clone()
-                    DropdownOption.Name = Option.Name
-                    DropdownOption.Title.Text = Option.Name
+                    DropdownOption.Name = Option
+                    DropdownOption.Title.Text = Option
                     DropdownOption.Parent = Dropdown.List.Holder
                     DropdownOption.Visible = true
     
