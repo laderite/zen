@@ -6,6 +6,10 @@ local initJumpPower = player.Character:FindFirstChildWhichIsA('Humanoid').JumpPo
 local initHipHeight = player.Character:FindFirstChildWhichIsA('Humanoid').HipHeight
 local initFOV = math.floor(workspace:FindFirstChildWhichIsA('Camera').FieldOfView)
 
+local previousJumpPower = nil
+local previousWalkSpeed = nil
+local previousHipHeight = nil
+
 local UniversalBuilder = {} do
 
     function UniversalBuilder:SetLibrary(library)
@@ -14,14 +18,17 @@ local UniversalBuilder = {} do
 
     function UniversalBuilder:Init()
         
+
         task.spawn(function()
             while task.wait() do
                 if Toggles.Jumppower.Value and (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
                     player.Character:FindFirstChildWhichIsA('Humanoid').JumpPower = Options.JumppowerSlider.Value
-                else
+                    previousJumpPower = Options.JumppowerSlider.Value
+                elseif previousJumpPower ~= nil then
                     if (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
-                        player.Character:FindFirstChildWhichIsA('Humanoid').JumpPower = initJumpPower
+                        player.Character:FindFirstChildWhichIsA('Humanoid').JumpPower = initialJumpPower
                     end
+                    previousJumpPower = nil
                 end
             end
         end)
@@ -30,10 +37,12 @@ local UniversalBuilder = {} do
             while task.wait() do
                 if Toggles.Walkspeed.Value and (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
                     player.Character:FindFirstChildWhichIsA('Humanoid').WalkSpeed = Options.WalkspeedSlider.Value
-                else
+                    previousWalkSpeed = Options.WalkspeedSlider.Value
+                elseif previousWalkSpeed ~= nil then
                     if (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
                         player.Character:FindFirstChildWhichIsA('Humanoid').WalkSpeed = initWalkSpeed
                     end
+                    previousWalkSpeed = nil
                 end
             end
         end)
@@ -42,10 +51,12 @@ local UniversalBuilder = {} do
             while task.wait() do
                 if Toggles.HipHeight.Value and (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
                     player.Character:FindFirstChildWhichIsA('Humanoid').HipHeight = Options.HipHeightSlider.Value
-                else
+                    previousHipHeight = Options.HipHeightSlider.Value
+                elseif previousHipHeight ~= nil then
                     if (player.Character and player.Character:FindFirstChildWhichIsA('Humanoid')) then
-                        player.Character:FindFirstChildWhichIsA('Humanoid').HipHeight = initHipHeight
+                        player.Character:FindFirstChildWhichIsA('Humanoid').HipHeight = initialHipHeight
                     end
+                    previousHipHeight = nil
                 end
             end
         end)
