@@ -4,18 +4,15 @@ local ThemeManager = {} do
 	-- if not isfolder(ThemeManager.Folder) then makefolder(ThemeManager.Folder) end
 
 	ThemeManager.Library = nil
-    ThemeManager.BuiltInThemes = {
-	['Neverlose']      = { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"000f1e","AccentColor":"00b4f0","BackgroundColor":"050514","OutlineColor":"0a1e28"}') },
-	['Aqua']           = { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0e3443","AccentColor":"00bcd4","BackgroundColor":"08161d","OutlineColor":"134f63"}') },
-	['Oceanic']        = { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"2c2a4a","AccentColor":"0099cc","BackgroundColor":"20203b","OutlineColor":"3a385e"}') },
-	['Crimson Flame'] = { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"440000","AccentColor":"ff3333","BackgroundColor":"220000","OutlineColor":"550000"}') },
-	['Emerald Dream'] = { 5, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"003300","AccentColor":"00cc66","BackgroundColor":"001a00","OutlineColor":"004d26"}') },
-	['Lunar Eclipse'] = { 6, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0f1a23","AccentColor":"ffc62e","BackgroundColor":"0c1720","OutlineColor":"20303e"}') },
-	['Neon Pulse'] = { 7, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"000000","AccentColor":"00ffcc","BackgroundColor":"000000","OutlineColor":"330033"}') },
-	['Golden Sands'] = { 8, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"f9e3af","AccentColor":"ffd700","BackgroundColor":"e0c991","OutlineColor":"c8b280"}') },
-	['Azure Sky'] = { 9, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0077be","AccentColor":"a6dcef","BackgroundColor":"d1eaf5","OutlineColor":"00557a"}') },
-	['Zen'] = { 10, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"eaeaea","AccentColor":"5bb4b4","BackgroundColor":"f5f5f5","OutlineColor":"dcdcdc"}') },
-    }
+	ThemeManager.BuiltInThemes = {
+		['Lunar']           = { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0f1a23","AccentColor":"ffc62e","BackgroundColor":"0c1720","OutlineColor":"20303e"}') },
+		['Neverlose']       = { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"000f1e","AccentColor":"00b4f0","BackgroundColor":"050514","OutlineColor":"0a1e28"}') },
+		['Aqua']            = { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"0e3443","AccentColor":"00bcd4","BackgroundColor":"08161d","OutlineColor":"134f63"}') },
+		['Oceanic']         = { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"2c2a4a","AccentColor":"0099cc","BackgroundColor":"20203b","OutlineColor":"3a385e"}') },
+		['Crimson']         = { 5, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"440000","AccentColor":"ff3333","BackgroundColor":"220000","OutlineColor":"550000"}') },
+		['Emerald']         = { 6, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"003300","AccentColor":"00cc66","BackgroundColor":"001a00","OutlineColor":"004d26"}') },
+		['Neon']            = { 7, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"000000","AccentColor":"00ffcc","BackgroundColor":"000000","OutlineColor":"330033"}') },
+	}
 
 	function ThemeManager:ApplyTheme(theme)
 		local customThemeData = self:GetCustomTheme(theme)
