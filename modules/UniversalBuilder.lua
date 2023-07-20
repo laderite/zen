@@ -66,7 +66,7 @@ local UniversalBuilder = {} do
     function UniversalBuilder:Build(tab)
 
         local PlayerSection = tab:AddLeftGroupbox('Local Player')
-        local othersection = tab:AddLeftGroupbox('Other Features')
+        local othersection = tab:AddRightGroupbox('Other Features')
 
         PlayerSection:AddToggle('Walkspeed', {Text = 'Walk Speed', Default = false}):AddKeyPicker('WalkspeedKeybind', { Default = '', SyncToggleState = true, NoUI = false, Text = 'Walk Speed'})
         PlayerSection:AddSlider('WalkspeedSlider', { Text = 'Value', Default = initWalkSpeed, Min = initWalkSpeed, Max = 200, Rounding = 0, Compact = true})
