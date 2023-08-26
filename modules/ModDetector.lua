@@ -65,13 +65,16 @@ function ModDetector.new(groupIDs)
         end
     end
     
-    task.spawn(function()
-        while task.wait() do
-            local foundMod, role, group = check_for_mods()
-            if foundMod and self.onDetectedCallback then
-                warn("Mod detected!")
-                self.onDetectedCallback(role, group) -- Call the callback
-                task.wait(5)
+    local foundMod, role, group = check_for_mods()
+    if foundMod and self.onDetectedCallback then
+        self.onDetectedCallback(role, group) -- Call the callback
+    end
+
+    Players.ChildAdded:Connect(function(v)
+        for _,groupID in ipairs(groups) do
+            local role = v:GetRoleInGroup(groupID)
+            if check_role(role) then
+                self.onDetectedCallback(role, group)
             end
         end
     end)
