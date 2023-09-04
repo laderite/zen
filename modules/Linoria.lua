@@ -3590,8 +3590,9 @@ function Library:CreateWindow(...)
                 if Cache[Prop] == 1 then
                     continue;
                 end;
-
+    pcall(function()
                 TweenService:Create(Desc, TweenInfo.new(FadeTime, Enum.EasingStyle.Linear), { [Prop] = Toggled and Cache[Prop] or 1 }):Play();
+                    end)
             end;
         end;
 
