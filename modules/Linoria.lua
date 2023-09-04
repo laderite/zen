@@ -1,10 +1,16 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
+local service = setmetatable({ }, {
+    __index = function(self, key)
+        return game:GetService(key)
+    end
+})
+
+local InputService = service.UserInputService
+local TextService = service.TextService
+local CoreGui = service.CoreGui
+local Teams = service.Teams
+local Players = service.Players
+local RunService = service.RunService
+local TweenService = service.TweenService
 local RenderStepped = RunService.RenderStepped;
 local LocalPlayer = Players.LocalPlayer;
 local Mouse = LocalPlayer:GetMouse();
